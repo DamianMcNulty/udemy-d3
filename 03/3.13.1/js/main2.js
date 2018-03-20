@@ -9,7 +9,7 @@ var margin = { left:80, right:20, top:50, bottom:100 };
 var width = 600 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
     
-var g = d3.select("#chart-area")
+var g2 = d3.select("#chart-area2")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -17,7 +17,7 @@ var g = d3.select("#chart-area")
             .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
 // X Label
-g.append("text")
+g2.append("text")
     .attr("y", height + 50)
     .attr("x", width / 2)
     .attr("font-size", "20px")
@@ -25,20 +25,20 @@ g.append("text")
     .text("Month");
 
 // Y Label
-g.append("text")
+g2.append("text")
     .attr("y", -60)
     .attr("x", -(height / 2))
     .attr("font-size", "20px")
     .attr("text-anchor", "middle")
     .attr("transform", "rotate(-90)")
-    .text("Revenue");
+    .text("Profit");
 
 d3.json("data/revenues.json", function(data){
     // console.log(data);
 
     // Clean data
     data.forEach(function(d) {
-        d.revenue = +d.revenue;
+        d.profit = +d.profit;
 
     });
 
@@ -55,7 +55,7 @@ d3.json("data/revenues.json", function(data){
 
     // X Axis
     var xAxisCall = d3.axisBottom(x);
-    g.append("g")
+    g2.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height +")")
         .call(xAxisCall);
@@ -63,19 +63,19 @@ d3.json("data/revenues.json", function(data){
     // Y Axis
     var yAxisCall = d3.axisLeft(y)
         .tickFormat(function(d){ return "\u20ac" + d; });
-    g.append("g")
+    g2.append("g")
         .attr("class", "y axis")
         .call(yAxisCall);
 
     // Bars
-    var rects = g.selectAll("rect")
+    var rects = g2.selectAll("rect")
         .data(data)
         
     rects.enter()
         .append("rect")
-            .attr("y", function(d){ return y(d.revenue); })
+            .attr("y", function(d){ return y(d.profit); })
             .attr("x", function(d){ return x(d.month) })
-            .attr("height", function(d){ return height - y(d.revenue); })
+            .attr("height", function(d){ return height - y(d.profit); })
             .attr("width", x.bandwidth)
-            .attr("fill", "green");
+            .attr("fill", "red");
 })
