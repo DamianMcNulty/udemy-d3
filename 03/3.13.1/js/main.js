@@ -39,6 +39,7 @@ d3.json("data/revenues.json", function(data){
     // Clean data
     data.forEach(function(d) {
         d.revenue = +d.revenue;
+
     });
 
     // X Scale
@@ -61,7 +62,7 @@ d3.json("data/revenues.json", function(data){
 
     // Y Axis
     var yAxisCall = d3.axisLeft(y)
-        .tickFormat(function(d){ return "$" + d; });
+        .tickFormat(function(d){ return "\u20ac" + d; });
     g.append("g")
         .attr("class", "y axis")
         .call(yAxisCall);

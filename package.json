@@ -1,0 +1,23 @@
+{
+  "name": "udemy-d3",
+  "version": "1.0.0",
+  "description": "A collection of files for \"Mastering data visualization in D3.js\"",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianMcNulty/udemy-d3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamianMcNulty/udemy-d3/issues"
+  },
+  "homepage": "https://github.com/DamianMcNulty/udemy-d3#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
